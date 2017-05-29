@@ -19,8 +19,9 @@
 ;; Theme
 (load-theme 'gruvbox t nil)
 
-;; Flycheck
+;; Flycheck and company
 (global-flycheck-mode)
+(global-company-mode)
 
 ;; Cull extra whitespace
 (add-to-list 'before-save-hook 'delete-trailing-whitespace)
