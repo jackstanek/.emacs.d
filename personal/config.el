@@ -1,6 +1,3 @@
-;; Turn on ido
-(ido-mode)
-
 ;; Electric pairs
 (electric-pair-mode)
 
