@@ -1,11 +1,14 @@
-;; Enable elpy
-(add-to-list 'package-archives
-             '("elpy" . "http://jorgenschaefer.github.io/packages/"))
-(elpy-enable)
+(require 'python)
 
-;; Allow flycheck to locate the right .pylintrc file
+(defun personal-configure-python-mode-map ()
+  (define-key python-mode-map (kbd "M-.") 'jedi:goto-definition)
+  (define-key python-mode-map (kbd "M-*") 'jedi:goto-definition-pop-marker))
+
+(defun personal-start-jedi ()
+  (jedi:setup)
+  (add-to-list 'company-backends 'company-jedi))
+
 (add-to-list 'python-mode-hook (lambda ()
-                                 (setq flycheck-pylintrc
-                                       (flycheck-locate-config-file-ancestor-directories
-                                        ".pylintrc"
-                                        nil))))
+                                 (progn
+                                   (personal-configure-python-mode-map)
+                                   (personal-start-jedi))))

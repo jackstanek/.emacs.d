@@ -11,18 +11,26 @@
 
 ;; UI display
 (scroll-bar-mode -1)
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+;; Ido
+(ido-mode t)
 
 ;; Theme
-(load-theme 'gruvbox t nil)
+(load-theme 'anti-zenburn t nil)
 
 ;; Flycheck and company
 (global-flycheck-mode)
 (global-company-mode)
+(setq company-idle-delay 0)
 
 ;; Cull extra whitespace
 (add-to-list 'before-save-hook 'delete-trailing-whitespace)
 
+;; Turn off line hl
+(global-hl-line-mode -1)
+
+;; Turn on time!
+(display-time)
 
 ;; Scrolling
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
@@ -31,6 +39,4 @@
 
 (setq scroll-step 1) ;; keyboard scroll one line at a time
 
-;; Icicles
-(require 'icicles)
-(icy-mode)
+(set-default 'truncate-lines t)
